@@ -1,4 +1,4 @@
-package com.licly.wms;
+package com.licly.credit;
 
 import com.licly.common.Result;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -6,18 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 仓储
+ * 积分
  *
  * @author licly
  * @date 2020/10/5
  */
 
 @RestController
-@RequestMapping("/v1/wms")
-public class WmsWeb {
+@RequestMapping("/v1/credit")
+public class CreditService implements CreditApi {
 
-    @PostMapping("/inform")
-    public Result inform() {
+    @Override
+    public Result increaseCredit(int totalPrice) {
+        System.out.println("increase credit success!");
         return Result.success();
     }
 }

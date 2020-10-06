@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1/stock")
-public class StockWeb {
+public class StockService implements StockApi {
 
-    @PostMapping("/reduce")
-    public Result reduceStock() {
+    @Override
+    public Result reduceStock(String productId, int StockNum) {
+        System.out.println("商品" + productId + "减少库存" + StockNum);
+        System.out.println("reduce stock success!");
         return Result.success();
     }
 }

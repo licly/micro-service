@@ -1,13 +1,20 @@
-
 eureka:
   server:
     enable-self-preservation: false
     eviction-interval-timer-in-ms: 30000
-
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/
 
 spring:
   application:
     name: eureka-server
+  security:
+    user:
+      name: licly
+      password: licly
+
+server:
+  port: 8761
