@@ -1,12 +1,16 @@
 eureka:
   server:
     enable-self-preservation: false
+    # 清理无效节点周期，默认60s
     eviction-interval-timer-in-ms: 30000
+    response-cache-update-interval-ms: 10000
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/
+  instance:
+    lease-expiration-duration-in-seconds: 30
 
 spring:
   application:
