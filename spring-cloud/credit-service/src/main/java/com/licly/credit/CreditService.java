@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CreditService implements CreditApi {
 
     @Override
-    public Result increaseCredit(int totalPrice) {
+    public Result increaseCredit(Integer totalPrice) {
         System.out.println("increase credit success!");
         return Result.success();
     }

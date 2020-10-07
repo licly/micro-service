@@ -5,10 +5,10 @@ import com.licly.order.entity.Order.Order;
 import com.licly.order.feign.CreditService;
 import com.licly.order.feign.StockService;
 import com.licly.order.feign.WmsService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
-import java.sql.ResultSet;
 
 /**
  * 订单服务
@@ -17,6 +17,7 @@ import java.sql.ResultSet;
  * @date 2020/10/6
  */
 
+@Slf4j
 @Service
 public class OrderService {
 
@@ -29,14 +30,15 @@ public class OrderService {
     @Resource
     private StockService stockService;
 
-    public Result placeOrder(Order order) {
+	public Result placeOrder(Order order) {
         // 扣减库存
-        stockService.reduceStock(order.getProductId(), order.getStockNum());
+        stockService.reduceStock(order.getProductId(), 0);
         // 通知仓储
-        wmsService.inform(order.getProductId(), order.getAddress(), order.getStockNum());
+        wmsService.inform(order.getProductId(), order.getAddress(), 0);
         // 增加积分
         creditService.increaseCredit(order.getTotalPrice());
 
+	    log.info("完成订单！");
         return Result.success();
     }
 }

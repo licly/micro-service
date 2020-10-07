@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StockService implements StockApi {
 
     @Override
-    public Result reduceStock(String productId, int StockNum) {
+    public Result reduceStock(String productId, Integer StockNum) {
         System.out.println("商品" + productId + "减少库存" + StockNum);
         System.out.println("reduce stock success!");
         return Result.success();

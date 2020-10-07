@@ -15,5 +15,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface WmsApi {
 
     @RequestMapping("/inform/{productId}/{address}/{stockNum}")
-    Result inform(@PathVariable("productId") String productId, @PathVariable("address") String address, @PathVariable("stockNum") int stockNum);
+    Result inform(@PathVariable("productId") String productId, @PathVariable("address") String address, @PathVariable("stockNum") Integer stockNum);
 }

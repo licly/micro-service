@@ -15,5 +15,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface CreditApi {
 
     @RequestMapping("/increaseCredit/{totalPrice}")
-    Result increaseCredit(@PathVariable("totalPrice") int totalPrice);
+    Result increaseCredit(@PathVariable("totalPrice") Integer totalPrice);
 }

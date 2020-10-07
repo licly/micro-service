@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WmsService implements WmsApi {
 
     @Override
-    public Result inform(String productId, String address, int stockNum) {
+    public Result inform(String productId, String address, Integer stockNum) {
         System.out.println("通知仓库发货到" + address);
         return Result.success();
     }

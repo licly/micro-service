@@ -21,5 +21,5 @@ public interface StockApi {
      * @return 处理结果
      */
     @RequestMapping("/reduceStock/{productId}/{stockNum}")
-    Result reduceStock(@PathVariable("productId") String productId, @PathVariable("stockNum") int StockNum);
+    Result reduceStock(@PathVariable("productId") String productId, @PathVariable("stockNum") Integer StockNum);
 }
