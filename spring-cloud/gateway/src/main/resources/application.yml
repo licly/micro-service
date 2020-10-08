@@ -8,10 +8,14 @@ spring:
   cloud:
     gateway:
       routes:
-#        # lb表示从注册中心获取服务
-#        - uri: lb://order-service
-#          predicates:
-#            - Path=/v1/order/**
+        # lb表示从注册中心获取服务
+        - uri: lb://order-service
+          predicates:
+            - Path=/v1/order/**
+          filters:
+            - AddRequestHeader=X-ACCESS-TOKEN,token #添加请求头
+            - RemoveRequestHeader=X-ACCESS-TOKEN #删除请求头
+            - SetStatus=401
       # 不需要单独为每个服务配置路由信息，会将/service-name/url转发到service-name的url接口
       discovery:
         locator:
