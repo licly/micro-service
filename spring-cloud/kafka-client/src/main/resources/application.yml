@@ -1,0 +1,13 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: kafka-client
+
+mq:
+  producer:
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    ack: all
+    bootstrap-servers: 101.200.90.34:9092
+

@@ -1,4 +1,4 @@
-package com.licly.order;
+package com.licly.order.web;
 
 import com.licly.common.Result;
 import com.licly.order.entity.Order.Order;

@@ -9,7 +9,7 @@ package com.licly.common;
 
 public class Result {
 
-    private Integer code = 200;
+    private Integer code = 0;
 
     private String msg;
 

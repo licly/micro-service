@@ -11,7 +11,7 @@
     <modules>
         <module>spring-cloud</module>
         <module>common</module>
-    </modules>
+	</modules>
 
 	<properties>
 		<spring.boot.version>2.2.10.RELEASE</spring.boot.version>
@@ -28,7 +28,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
