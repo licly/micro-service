@@ -3,6 +3,7 @@ package com.licly.kafka;
 import com.licly.kafka.config.PropertyConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +31,8 @@ public class KafkaProducerClient {
 		props.put("key.serializer", config.getKeySerializer());
 		props.put("value.serializer", config.getValueSerializer());
 
-		Producer producer = new KafkaProducer(props);
+		Producer<String, String> producer = new KafkaProducer<>(props);
+		producer.send(new ProducerRecord<>("micro_service-test", "test-message"), new KafkaPushCallback());
 
 
 	}

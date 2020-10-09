@@ -27,4 +27,6 @@ public class PropertyConfig {
 
 	private String bootstrapServers;
 
+	private int linger;
+
 }

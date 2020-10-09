@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 
 /**
- * TODO
+ * 仓储系统开放接口
  *
  * @author licly
  * @date 2020/10/6

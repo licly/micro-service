@@ -11,6 +11,7 @@
     <modules>
         <module>spring-cloud</module>
         <module>common</module>
+		<module>practice</module>
 	</modules>
 
 	<properties>
