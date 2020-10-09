@@ -30,7 +30,7 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 		this.applicationEventPublisher = applicationEventPublisher;
 	}
 
-	@Scheduled
+	// @Scheduled
 	public void refreshRoutes() {
 
 	}

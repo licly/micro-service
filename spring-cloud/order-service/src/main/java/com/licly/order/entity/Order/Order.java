@@ -14,6 +14,8 @@ import lombok.Setter;
 @Getter
 public class Order {
 
+    private String OrderId;
+
     private String productId;
 
     private Integer stockNum;

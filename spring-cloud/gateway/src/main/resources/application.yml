@@ -12,10 +12,10 @@ spring:
         - uri: lb://order-service
           predicates:
             - Path=/v1/order/**
-          filters:
-            - AddRequestHeader=X-ACCESS-TOKEN,token #添加请求头
-            - RemoveRequestHeader=X-ACCESS-TOKEN #删除请求头
-            - SetStatus=401
+#          filters:
+#            - AddRequestHeader=X-ACCESS-TOKEN,token #添加请求头
+#            - RemoveRequestHeader=X-ACCESS-TOKEN #删除请求头
+#            - SetStatus=401
       # 不需要单独为每个服务配置路由信息，会将/service-name/url转发到service-name的url接口
       discovery:
         locator:
@@ -23,7 +23,32 @@ spring:
           # 开启服务名称小写，开启后，大写的服务名称不能使用
           lower-case-service-id: true
 
+# 每个服务在第一次被访问的时候会加载初始化ribbon组件，很容易导致超时，这里设置服务启动时初始化ribbon组件
+ribbon:
+  eager-load:
+    enabled: true
+  #网关的超时一般都设置几秒钟，3/5秒这样子，服务间超时时间一般都是1s
+  ConnectTimeout: 1000
+  ReadTimeout: 1000
+  #true:会对所有请求重试，false：只对get请求重试
+  OkToRetryOnAllOperations: true
+  MaxAutoRetries: 3
+  MaxAutoRetriesNextServer: 1
+  http:
+    client:
+      enabled: true
+
+
 eureka:
   client:
     service-url:
       defaultZone: http://licly:licly@localhost:8761/eureka/
+
+
+# 中小型的系统，如果没有设计好一整套资源隔离、熔断、降级等系统高可用方案，没必要直接开启hystrix，
+feign:
+  hystrix:
+    enabled: false
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 15000
+
