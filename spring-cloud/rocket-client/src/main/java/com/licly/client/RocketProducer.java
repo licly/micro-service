@@ -1,4 +1,4 @@
-package com.licly.mq.rocket;
+package com.licly.client;
 
 /**
  * RocketMQ 生产者
