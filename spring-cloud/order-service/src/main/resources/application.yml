@@ -26,4 +26,8 @@ spring:
     hikari:
 
 
+  redis:
+    port: 6379
+
+
 

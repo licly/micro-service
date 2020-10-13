@@ -1,4 +1,4 @@
-package com.licly.mq.rocket;
+package com.licly.client;
 
 /**
  * RocketMQ 消费者
