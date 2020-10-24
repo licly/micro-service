@@ -26,7 +26,7 @@ public class OrderTransactionListenerImpl implements TransactionListener {
 
     @Override
     public LocalTransactionState executeLocalTransaction(Message msg, Object arg) {
-        orderService.placeOrder()
+        // orderService.placeOrder();
         return null;
     }
 

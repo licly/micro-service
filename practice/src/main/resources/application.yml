@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: pracice
+  redis:
+    host: 39.100.49.60
+    port: 6379
+    password: 123456
+

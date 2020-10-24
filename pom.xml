@@ -12,6 +12,7 @@
         <module>spring-cloud</module>
         <module>common</module>
 		<module>practice</module>
+		<module>admin</module>
 	</modules>
 
 	<properties>
@@ -29,6 +30,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -38,11 +40,7 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.18</version>
-		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
@@ -74,8 +72,8 @@
                 <version>3.8.1</version>
                 <configuration>
                     <skip>true</skip>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.9</source>
+                    <target>1.9</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>

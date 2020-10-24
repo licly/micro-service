@@ -23,6 +23,8 @@
         <module>gateway</module>
 		<module>rocket-client</module>
 		<module>kafka-client</module>
+		<module>admin-server</module>
+		<module>admin-client</module>
 	</modules>
 
     <properties>

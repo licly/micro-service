@@ -12,3 +12,18 @@ eureka:
 spring:
   application:
     name: stock-service
+    datasource:
+      url: jdbc:mysql://39.100.49.60:3306/licly_micro_service?characterEncoding=utf8&serverTimezone=GMT%2B8
+      username: root
+      password: 902116
+      druid:
+        validation-query: select 1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
