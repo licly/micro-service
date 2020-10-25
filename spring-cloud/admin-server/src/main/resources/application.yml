@@ -1,8 +1,12 @@
 spring:
   application:
     name: admin-server
+  boot.admin.client:
+    username: sba-client
+    password: s3cret
 server:
   port: 8769
+
 
 eureka:
   client:

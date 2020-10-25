@@ -52,3 +52,12 @@ feign:
 
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 15000
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
