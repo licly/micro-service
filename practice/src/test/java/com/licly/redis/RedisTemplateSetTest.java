@@ -45,7 +45,7 @@ public class RedisTemplateSetTest {
 
 	@Test
 	public void testDifference() {
-		Set<String> num = redis.opsForSet().difference("num", List.of("4"));
-		System.out.println(num);
+		// Set<String> num = redis.opsForSet().difference("num", List.of("4"));
+		// System.out.println(num);
 	}
 }

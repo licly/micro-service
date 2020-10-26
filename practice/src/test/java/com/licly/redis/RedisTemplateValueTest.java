@@ -70,8 +70,8 @@ public class RedisTemplateValueTest {
 
 	@Test
 	public void testMultiSet() {
-		List<String> list = redis.opsForValue().multiGet(List.of("count", "user"));
-		System.out.println(list);
+		// List<String> list = redis.opsForValue().multiGet(List.of("count", "user"));
+		// System.out.println(list);
 	}
 
 	@Test
