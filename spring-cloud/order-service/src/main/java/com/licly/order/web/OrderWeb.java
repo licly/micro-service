@@ -3,6 +3,7 @@ package com.licly.order.web;
 import com.licly.common.Result;
 import com.licly.order.entity.Order.Order;
 import com.licly.order.service.OrderService;
+import com.licly.utils.SleepUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class OrderWeb {
 
     @PostMapping("/placeOrder")
     public Result placeOrder(@RequestBody Order order) {
+        SleepUtils.sleep(3);
         return service.placeOrder(order);
     }
 

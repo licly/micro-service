@@ -78,7 +78,7 @@ public class OrderService {
     @Transactional(rollbackFor = Exception.class)
 	public Result placeOrder(Order order) {
         System.out.println("into");
-        SleepUtils.sleep(1000);
+        // SleepUtils.sleep(1000);
         // 扣减库存
         stockService.reduceStock(order.getProductId(), 0);
         // 通知仓储
@@ -87,12 +87,12 @@ public class OrderService {
         creditService.increaseCredit(order.getTotalPrice());
 
 	    log.info("完成订单！");
-	    String key = order.getOrderId() + order.getProductId();
-	    if (redisTemplate.opsForValue().get(key) != null) {
-            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-        } else {
-	        redisTemplate.opsForValue().set(key, order.getOrderId());
-        }
+	    // String key = order.getOrderId() + order.getProductId();
+	    // if (redisTemplate.opsForValue().get(key) != null) {
+        //     TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+        // } else {
+	    //     redisTemplate.opsForValue().set(key, order.getOrderId());
+        // }
         return Result.success();
     }
 
