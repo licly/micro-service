@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!--模块名-->
+	<property name="MODULE_NAME" value="order"/>
+	<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+	<property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%-5level] %logger:%-3line - %msg%n"/>
+	<!--日志输出路径-->
+<!--	<property name="LOG_DIR" value="/opt/iot-logs/"/>-->
+
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8">
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<!--按日期输出到日志文件中-->
+	<springProfile name="dev | test | prod_test | prod_cluster_test | prod | prod_cluster">
+		<!--文件输出，每日滚动，最长保存60天-->
+		<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${LOG_DIR}/${MODULE_NAME}.log</file>
+			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+				<!-- 按天回滚 daily -->
+				<fileNamePattern>${LOG_DIR}/${MODULE_NAME}/${MODULE_NAME}.%d{yyyy-MM-dd}.gz</fileNamePattern>
+				<!-- 日志最大的历史 60天 -->
+				<maxHistory>30</maxHistory>
+				<totalSizeCap>3GB</totalSizeCap>
+			</rollingPolicy>
+			<encoder>
+				<pattern>${LOG_PATTERN}</pattern>
+				<charset>UTF-8</charset>
+			</encoder>
+		</appender>
+	</springProfile>
+
+	<!--关闭eureka客户端每分钟的日志输出-->
+	<logger name="com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver" additivity="false" level="WARN">
+		<appender-ref ref="STDOUT"/>
+	</logger>
+
+	<!--本地开发控制台输出：业务代码debug，全局info-->
+	<springProfile name="default | local | out">
+		<logger name="com.licly" additivity="false" level="DEBUG">
+			<appender-ref ref="STDOUT"/>
+		</logger>
+		<root level="INFO">
+			<appender-ref ref="STDOUT"/>
+		</root>
+	</springProfile>
+
+	<!--测试环境控制台和文件输出：业务代码debug，全局info-->
+	<springProfile name="dev | test | prod_test | prod_cluster_test">
+		<logger name="com.sgd" additivity="false" level="DEBUG">
+			<appender-ref ref="STDOUT"/>
+			<appender-ref ref="FILE"/>
+		</logger>
+		<root level="INFO">
+			<appender-ref ref="STDOUT"/>
+			<appender-ref ref="FILE"/>
+		</root>
+	</springProfile>
+
+	<!--生产环境控制台和文件输出：业务代码info，全局warn-->
+	<springProfile name="prod | prod_cluster">
+		<logger name="com.sgd" additivity="false" level="INFO">
+			<appender-ref ref="STDOUT"/>
+			<appender-ref ref="FILE"/>
+		</logger>
+		<root level="WARN">
+			<appender-ref ref="STDOUT"/>
+			<appender-ref ref="FILE"/>
+		</root>
+	</springProfile>
+
+</configuration>
